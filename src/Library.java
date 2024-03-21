@@ -4,8 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Library{
-    public static JFrame f;
-    public static volatile boolean open;//must be set to false after a window is closed;
+    public static JFrame f;//library frame
     public static void main (String[] args){
         try{//main try block
             javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -26,6 +25,7 @@ public class Library{
                     f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     f.setSize(500, 300);
                     f.setLayout(grid);
+                    
                     //button action commands
                     conv.setActionCommand("conv");
                     calc.setActionCommand("calc");
@@ -40,7 +40,6 @@ public class Library{
                     addListener(f, binAdd);
                     addListener(f, fcQuiz);
                     addListener(f, traffic);
-
                     //frame contents
                     f.getContentPane().add(conv);
                     f.getContentPane().add(calc);
@@ -48,7 +47,6 @@ public class Library{
                     f.getContentPane().add(binAdd);
                     f.getContentPane().add(fcQuiz);
                     f.getContentPane().add(traffic);
-
                     //open frame
                     f.setVisible(true);
                 }//end run
@@ -63,7 +61,6 @@ public class Library{
             public void actionPerformed(ActionEvent event) {
                 //hide Library window
                 frame.setVisible(false);
-                open = true;
                 //open clicked project
                 switch (event.getActionCommand()) {
                     case "conv":
