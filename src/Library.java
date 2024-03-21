@@ -4,13 +4,14 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Library{
+    public static JFrame f;
     public static volatile boolean open;//must be set to false after a window is closed;
     public static void main (String[] args){
         try{//main try block
             javax.swing.SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     //frame and layout
-                    JFrame frame = new JFrame("Discord Mods Projects");
+                    f = new JFrame("Discord Mods Projects");
                     GridLayout grid = new GridLayout(0, 2);
 
                     //buttons
@@ -22,9 +23,9 @@ public class Library{
                     JButton traffic = new JButton("Traffic Light Controller");
 
                     //frame parameters
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    frame.setSize(500, 300);
-                    frame.setLayout(grid);
+                    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    f.setSize(500, 300);
+                    f.setLayout(grid);
                     //button action commands
                     conv.setActionCommand("conv");
                     calc.setActionCommand("calc");
@@ -33,23 +34,23 @@ public class Library{
                     fcQuiz.setActionCommand("fcQuiz");
                     traffic.setActionCommand("traffic");
                     //button action listeners
-                    addListener(frame, conv);
-                    addListener(frame, calc);
-                    addListener(frame, bitOps);
-                    addListener(frame, binAdd);
-                    addListener(frame, fcQuiz);
-                    addListener(frame, traffic);
+                    addListener(f, conv);
+                    addListener(f, calc);
+                    addListener(f, bitOps);
+                    addListener(f, binAdd);
+                    addListener(f, fcQuiz);
+                    addListener(f, traffic);
 
                     //frame contents
-                    frame.getContentPane().add(conv);
-                    frame.getContentPane().add(calc);
-                    frame.getContentPane().add(bitOps);
-                    frame.getContentPane().add(binAdd);
-                    frame.getContentPane().add(fcQuiz);
-                    frame.getContentPane().add(traffic);
+                    f.getContentPane().add(conv);
+                    f.getContentPane().add(calc);
+                    f.getContentPane().add(bitOps);
+                    f.getContentPane().add(binAdd);
+                    f.getContentPane().add(fcQuiz);
+                    f.getContentPane().add(traffic);
 
                     //open frame
-                    frame.setVisible(true);
+                    f.setVisible(true);
                 }//end run
             });//end invokeLater
         } catch (Exception e){
@@ -84,9 +85,15 @@ public class Library{
                         TrafficLight.start();
                         break;
                 }
-                //on close, show library window
-                frame.setVisible(true);
             }
         });
     }//end addListener
 }//end class Library
+
+class Listener extends WindowAdapter {
+    @Override
+    public void windowClosing(WindowEvent e) {
+        //shows the Library window when a project closes
+        Library.f.setVisible(true);
+    }
+}
