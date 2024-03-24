@@ -28,9 +28,6 @@ public class Library {
                     f.setSize(500, 300);
                     f.setLayout(grid);
                     f.setLocationRelativeTo(null);
-                    // testing 3
-                    // testing
-                    // test2
                     // button action commands
                     conv.setActionCommand("conv");
                     calc.setActionCommand("calc");
