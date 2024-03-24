@@ -37,7 +37,7 @@ public class Library {
                                 case "calc":
                                     Calculator.start();
                                     break;
-                                case "bitOp":
+                                case "bitOps":
                                     BitwiseOps.start();
                                     break;
                                 case "binAdd":
@@ -89,15 +89,29 @@ public class Library {
         } // end main catch block
     }// end main
 
-    public static void projClosing() {
+    public static void projClosing() {//brings library to foreground when a program closes
         Library.frame.setVisible(true);
-    }
+    }//end projClosing
 }// end class Library
 
-class Listener extends WindowAdapter {
+class Listener extends WindowAdapter{//returns to Library after a program closes
     @Override
     public void windowClosing(WindowEvent e) {
         // shows the Library window when a project closes
         Library.projClosing();
     }
-}
+}//end class Listener
+
+class BackgroundImage extends JPanel{//sets a background image
+    Image pic;
+    public BackgroundImage(String image){
+        ImageIcon img = new ImageIcon(image);
+        pic = img.getImage();
+    }//end constructor BackgroundImage
+
+    @Override
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        g.drawImage(pic, 0, 0, null);
+    }//end paintComponent
+}//end class BackgroundImage

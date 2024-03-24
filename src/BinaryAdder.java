@@ -1,4 +1,7 @@
-import javax.swing.JFrame;
+
+//imports
+import javax.swing.*;
+import java.awt.*;
 
 public class BinaryAdder {
     public static void start() {
@@ -9,7 +12,13 @@ public class BinaryAdder {
                 Listener listener = new Listener();// Must be included
                 frame.addWindowListener(listener);// Must be included
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// Must be included
-                frame.setSize(600, 400);
+                
+                //background image
+                BackgroundImage image = new BackgroundImage("misc/Parallel-binary-adder-five-bit.jpg");
+
+                //frame parameters
+                frame.setSize(800, 400);
+                frame.add(image);
                 frame.setVisible(true);
                 frame.setLocationRelativeTo(null);
             }
