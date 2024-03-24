@@ -59,7 +59,6 @@ public class Library {
                     frame.setLayout(grid);
                     frame.setLocationRelativeTo(null);
                     
-                    
                     // button action commands
                     conv.setActionCommand("conv");
                     calc.setActionCommand("calc");
