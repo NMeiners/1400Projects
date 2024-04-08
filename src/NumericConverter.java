@@ -4,10 +4,13 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class NumericConverter {
     public static void start() {
@@ -15,6 +18,7 @@ public class NumericConverter {
             public void run() {
                 // frame and layout
                 JFrame frame = new JFrame("Numeric Converter");
+                frame.setLayout(new GridLayout(3, 3));
                 Listener listener = new Listener();// Must be included
                 frame.addWindowListener(listener);// Must be included
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// Must be included
@@ -64,6 +68,23 @@ public class NumericConverter {
                         System.out.println("output:" + outputSelection);
                     }
                 });
+                JPanel panel3 = new JPanel();
+                JTextField input = new JTextField(10);
+                JButton convertButton = new JButton("Convert");
+                panel3.add(input);
+                panel3.add(convertButton);
+                frame.add(panel3);
+
+                convertButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        String userInput = input.getText();
+                    }
+                });
+
+                JPanel panel4 = new JPanel();
+                JLabel output = new JLabel("Output");
+                panel4.add(output);
+                frame.add(panel4);
 
             }
         });
