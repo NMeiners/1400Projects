@@ -14,10 +14,10 @@ public class BinaryAdder {
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// Must be included
                 
                 //background image
-                BackgroundImage image = new BackgroundImage("misc/Parallel-binary-adder-five-bit.jpg");
+                BackgroundImage image = new BackgroundImage("misc/BinaryAdderBackground.jpg");
 
                 //frame parameters
-                frame.setSize(800, 400);
+                frame.setSize(1210, 527);
                 frame.add(image);
                 frame.setVisible(true);
                 frame.setLocationRelativeTo(null);

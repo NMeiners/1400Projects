@@ -69,22 +69,47 @@ public class NumericConverter {
                     }
                 });
                 JPanel panel3 = new JPanel();
+                panel3.setPreferredSize(new Dimension(200, 50));
                 JTextField input = new JTextField(10);
                 JButton convertButton = new JButton("Convert");
                 panel3.add(input);
                 panel3.add(convertButton);
                 frame.add(panel3);
-
+                int ConversionResult = 0;
+                String hexString = "";
                 convertButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        String userInput = input.getText();
+                        int userInput = Integer.parseInt(input.getText());
+                        int inputDecision = inputType.getSelectedIndex();
+                        int outputDecision = outputType.getSelectedIndex();
+
+                        if (inputDecision == 0) {
+                            // dec to dec
+                            if (outputDecision == 0) {
+                                ConversionResult = userInput;
+                            }
+                            // dec to bin
+                            if (outputDecision == 1) {
+
+                                hexString = Integer.toHexString(userInput);
+                            }
+
+                        }
+
                     }
                 });
 
                 JPanel panel4 = new JPanel();
-                JLabel output = new JLabel("Output");
-                panel4.add(output);
-                frame.add(panel4);
+                panel4.setPreferredSize(new Dimension(200, 50));
+                if (hexString != "") {
+                    JLabel output = new JLabel(hexString);
+                    panel4.add(output);
+                    frame.add(panel4);
+                } else {
+                    JLabel output = new JLabel(String.valueOf(ConversionResult));
+                    panel4.add(output);
+                    frame.add(panel4);
+                }
 
             }
         });
