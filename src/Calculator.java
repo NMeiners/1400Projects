@@ -48,7 +48,4 @@ public class Calculator {
             }
         });
     }// end start
-    public static void main(String[] args){
-        start();
-    }
 }// end Class Calculator
