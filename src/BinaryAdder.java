@@ -1,6 +1,7 @@
 
 //imports
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,12 +14,14 @@ public class BinaryAdder {
     private static JButton[][] nums;
     private static JLabel[][] ops;
     private static JLabel[] output;
+    private static Font font;
     //action listener. Updates everything in the frame
     private static ActionListener action = new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent event){
             //additional variables
             int out[] = {0, 0};
+            font = new Font("Arial", Font.PLAIN, 24);
             //changes button text
             nums[Integer.parseInt(event.getActionCommand())%5][Integer.parseInt(event.getActionCommand())%2].setText(
                 swap(nums[Integer.parseInt(event.getActionCommand())%5][Integer.parseInt(event.getActionCommand())%2].getText()));
@@ -96,6 +99,7 @@ public class BinaryAdder {
                     count = 0;
                     while (count < (nums.length * nums[0].length)){
                         nums[count%5][count%2] = new JButton("0");
+                        nums[count%5][count%2].setFont(font);
                         nums[count%5][count%2].setActionCommand(Integer.toString((count)));//sets action command to a number 0-9
                         nums[count%5][count%2].addActionListener(action);
                         count++;
@@ -106,6 +110,7 @@ public class BinaryAdder {
                     for (int i = 0 ; i < ops.length ; i++){
                         for (int x = 0 ; x < ops[i].length ; x++){
                             ops[i][x] = new JLabel("0");
+                            ops[i][x].setFont(font);
                         }
                     }
                     ops[4][6] = null;//special case for last cOUT. fixed in drawAdder
@@ -113,6 +118,7 @@ public class BinaryAdder {
                     for (int i = 0 ; i < output.length ; i++){
                         output[i] = new JLabel("0 + 0 = 0");
                         output[i].setBounds(590, 530, 300, (41+i*41));
+                        output[i].setFont(font);
                         image.add(output[i]);
                     }
 
