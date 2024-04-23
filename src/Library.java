@@ -13,7 +13,7 @@ public class Library {
                 public void run() {
                     // frame and layout
                     frame = new JFrame("Discord Mods Projects");
-                    GridLayout grid = new GridLayout(0, 2);
+                    frame.setLayout(new GridLayout(0, 2));
 
                     // buttons
                     JButton conv = new JButton("Numeric Converter");
@@ -56,7 +56,6 @@ public class Library {
                     // frame parameters
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame.setSize(800, 600);
-                    frame.setLayout(grid);
                     frame.setLocationRelativeTo(null);
 
                     // button action commands
@@ -105,6 +104,7 @@ class Listener extends WindowAdapter{//returns to Library after a program closes
 class BackgroundImage extends JPanel{//sets a background image
     Image pic;
     public BackgroundImage(String image){
+        setLayout(null);
         ImageIcon img = new ImageIcon(image);
         pic = img.getImage();
     }//end constructor BackgroundImage
