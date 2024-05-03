@@ -87,13 +87,14 @@ public class Calculator {
             isOperatorClicked = false;
         } else if (buttonText.matches("[/+*-]")) {
             if (!isOperatorClicked) {
-                if (!num2Entered)
+                if (!num2Entered){
                     if (display.getText() == ""){
                         
                     }
                     num1 = Double.parseDouble(display.getText());
-                else
+                } else {
                     num1 = calculateResult(num1, num2, operator);
+                }
                 operator = buttonText.charAt(0);
                 display.setText("");
                 isOperatorClicked = true;
