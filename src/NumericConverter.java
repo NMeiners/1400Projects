@@ -131,4 +131,28 @@ public class NumericConverter {
             }
         });
     }// end start
+
+    public static int convertToDecimal(String input, int base) {
+        int decimal = 0;
+        int power = 0;
+        
+        // Loop through the input string from right to left
+        for (int i = input.length() - 1; i >= 0; i--) {
+            char digitChar = input.charAt(i);
+            int digit;
+            
+            // Convert character to digit based on the base
+            if (Character.isDigit(digitChar)) {
+                digit = digitChar - '0';
+            } else {
+                digit = Character.toUpperCase(digitChar) - 'A' + 10;
+            }
+            
+            // Multiply the digit by the base raised to the power of its position
+            decimal += digit * Math.pow(base, power);
+            power++;
+        }
+        
+        return decimal;
+    }
 }// end class NumericConverter
