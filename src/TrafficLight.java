@@ -25,9 +25,6 @@ public class TrafficLight {
                     //variables
                     final int W = 46;//light width
                     final int H = 125;//light height
-                    //force reset
-                    shift = null;
-                    change = null;
                     seconds = 15;
                     current = 0;
                     
