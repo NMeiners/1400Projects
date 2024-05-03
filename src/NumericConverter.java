@@ -85,44 +85,36 @@ public class NumericConverter {
                     public void actionPerformed(ActionEvent e) {
                         int inputDecision = inputType.getSelectedIndex();
                         int outputDecision = outputType.getSelectedIndex();
+                        boolean inputVal = true;
 
+                        //input to int
                         if (inputDecision == 0) {
-                            // dec to dec
-                            if (outputDecision == 0) {
+                            if (isValidInteger(input.getText()))
                                 ConversionResult = Integer.parseInt(input.getText());
-                            }
-                            // dec to hex
-                            if (outputDecision == 1) {
-                                
-                                ConversionResult = Integer.parseInt(input.getText(),16);
-                            }
-                            // dec to bin
-                            if (outputDecision == 2) {
-                                
-                                ConversionResult = Integer.parseInt(input.getText(),2);
-
-                            }
-
+                            else
+                                inputVal = false;
+                        } else if (inputDecision == 1){
+                            if(isValidHexadecimal(input.getText()))
+                                ConversionResult = convertToDecimal(input.getText(), 16);
+                            else
+                                inputVal = false;
+                        } else {
+                            if (isValidBinary(input.getText()))
+                                ConversionResult = convertToDecimal(input.getText(), 2);
+                            else
+                                inputVal = false;
                         }
-                        else if (inputDecision == 1) {
-                            //hex to dec
-                            if (outputDecision == 0) {
-                                ConversionResult = Integer.parseInt(input.getText(),16);
-                            }
-                            // dec to hex
-                            if (outputDecision == 1) {
-                                
-                                ConversionResult = Integer.parseInt(input.getText(),16);
-                            }
-                            // dec to bin
-                            if (outputDecision == 2) {
-                                
-                                ConversionResult = Integer.parseInt(input.getText(),2);
 
-                            }
-
-                        }
-                    output.setText(Integer.toString(ConversionResult));
+                        //int to output
+                        if (inputVal){
+                            if (outputDecision == 0)
+                                output.setText(Integer.toString(ConversionResult));
+                            else if (outputDecision == 1)
+                                output.setText(decimalToBase(ConversionResult, 16));
+                            else
+                                output.setText(decimalToBase(ConversionResult, 2));
+                        } else
+                            output.setText("Invalid Entry");
                     }
                 });
 
