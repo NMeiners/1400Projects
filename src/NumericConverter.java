@@ -155,4 +155,53 @@ public class NumericConverter {
         
         return decimal;
     }
+
+    public static String decimalToBase(int number, int base) {
+        StringBuilder result = new StringBuilder();
+
+        // For binary conversion
+        if (base == 2) {
+            while (number > 0) {
+                result.insert(0, number % 2);
+                number /= 2;
+            }
+            if (result.length() == 0) {
+                result.append(0);
+            }
+        }
+        // For hexadecimal conversion
+        else if (base == 16) {
+            while (number > 0) {
+                int remainder = number % 16;
+                if (remainder < 10) {
+                    result.insert(0, (char) (remainder + '0'));
+                } else {
+                    result.insert(0, (char) (remainder - 10 + 'A'));
+                }
+                number /= 16;
+            }
+            if (result.length() == 0) {
+                result.append(0);
+            }
+        }
+        // Unsupported base
+        else {
+            throw new IllegalArgumentException("Base " + base + " is not supported.");
+        }
+
+        return result.toString();
+    }
+    //validation methods
+    public static boolean isValidBinary(String input) {
+        // Check if the string contains only 0s and 1s
+        return input.matches("[01]+");
+    }
+    public static boolean isValidHexadecimal(String input) {
+        // Check if the string contains only hexadecimal characters (0-9, A-F, or a-f)
+        return input.matches("[0-9A-Fa-f]+");
+    }
+    public static boolean isValidInteger(String input) {
+        // Check if the string contains only digits (positive or negative)
+        return input.matches("-?\\d+");
+    }
 }// end class NumericConverter
