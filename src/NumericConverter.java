@@ -13,7 +13,6 @@ import javax.swing.JTextField;
 
 public class NumericConverter {
     private static int ConversionResult = 0;
-    private static String hexString = "";
 
     public static void start() {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -67,7 +66,6 @@ public class NumericConverter {
                     public void actionPerformed(ActionEvent e) {
                         JComboBox<String> outputType = (JComboBox<String>) e.getSource();
                         String outputSelection = (String) outputType.getSelectedItem();
-                        System.out.println("output:" + outputSelection);
                     }
                 });
                 JPanel panel3 = new JPanel();
