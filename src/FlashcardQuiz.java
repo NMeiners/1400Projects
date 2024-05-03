@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Stack;
 
 import javax.swing.JButton;
@@ -114,10 +115,10 @@ public class FlashcardQuiz {
     }// end start
 
     public static void loadStack(ArrayList<String[]> source, Stack<String[]> destination){//move all quesions from the array list to a stack
-        while (!source.isEmpty()){
-            int randomIndex = (int) Math.random()*source.size();
-            destination.push(source.get(randomIndex));
-            source.remove(randomIndex);
+        Collections.shuffle(source);
+        for (int i = (source.size() - 1) ; i > -1 ; i--){
+            destination.push(source.get(i));
+            source.remove(i);
         }
     }//end loadStack
     public static void popStack(Stack<String[]> source, ArrayList<String[]> destination){//remove a single question from the stack and put it back in the array list
