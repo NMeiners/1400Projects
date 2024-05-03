@@ -94,6 +94,7 @@ public class NumericConverter {
                             if (outputDecision == 1) {
 
                                 hexString = Integer.toHexString(userInput);
+
                             }
                             // dec to bin
                             if (outputDecision == 2) {

@@ -88,45 +88,49 @@ public class Library {
         } // end main catch block
     }// end main
 
-    public static void projClosing() {//brings library to foreground when a program closes
+    public static void projClosing() {// brings library to foreground when a program closes
         frame.setVisible(true);
-    }//end projClosing
+    }// end projClosing
 }// end class Library
 
-class Listener extends WindowAdapter{//returns to Library after a program closes
+class Listener extends WindowAdapter {// returns to Library after a program closes
     private Timer[] timers;
-    //null constructor
-    public Listener(){
+
+    // null constructor
+    public Listener() {
         timers = null;
     }
-    //stop timer fix
-    public Listener(Timer timer1, Timer timer2){
+
+    // stop timer fix
+    public Listener(Timer timer1, Timer timer2) {
         timers = new Timer[2];
         timers[0] = timer1;
         timers[1] = timer2;
     }
+
     @Override
     public void windowClosing(WindowEvent e) {
         // shows the Library window when a project closes
         Library.projClosing();
-        if (timers != null){
+        if (timers != null) {
             timers[0].stop();
             timers[1].stop();
         }
     }
-}//end class Listener
+}// end class Listener
 
-class BackgroundImage extends JPanel{//sets a background image
+class BackgroundImage extends JPanel {// sets a background image
     Image pic;
-    public BackgroundImage(String image){
+
+    public BackgroundImage(String image) {
         setLayout(null);
         ImageIcon img = new ImageIcon(image);
         pic = img.getImage();
-    }//end constructor BackgroundImage
+    }// end constructor BackgroundImage
 
     @Override
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(pic, 0, 0, null);
-    }//end paintComponent
-}//end class BackgroundImage
+    }// end paintComponent
+}// end class BackgroundImage
