@@ -13,6 +13,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class NumericConverter {
+    private static int ConversionResult = 0;
+    private static String hexString = "";
+
     public static void start() {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -75,8 +78,7 @@ public class NumericConverter {
                 panel3.add(input);
                 panel3.add(convertButton);
                 frame.add(panel3);
-                int ConversionResult = 0;
-                String hexString = "";
+
                 convertButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         int userInput = Integer.parseInt(input.getText());
@@ -88,10 +90,13 @@ public class NumericConverter {
                             if (outputDecision == 0) {
                                 ConversionResult = userInput;
                             }
-                            // dec to bin
+                            // dec to hex
                             if (outputDecision == 1) {
 
                                 hexString = Integer.toHexString(userInput);
+                            }
+                            // dec to bin
+                            if (outputDecision == 2) {
 
                             }
 
