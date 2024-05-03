@@ -3,13 +3,11 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class NumericConverter {
@@ -78,44 +76,57 @@ public class NumericConverter {
                 panel3.add(input);
                 panel3.add(convertButton);
                 frame.add(panel3);
-
+                JLabel output = new JLabel("0");
+                JPanel panel4 = new JPanel();
+                panel4.add(output);
+                frame.add(panel4);
+                panel4.setPreferredSize(new Dimension(200, 50));
                 convertButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        int userInput = Integer.parseInt(input.getText());
                         int inputDecision = inputType.getSelectedIndex();
                         int outputDecision = outputType.getSelectedIndex();
 
                         if (inputDecision == 0) {
                             // dec to dec
                             if (outputDecision == 0) {
-                                ConversionResult = userInput;
+                                ConversionResult = Integer.parseInt(input.getText());
                             }
                             // dec to hex
                             if (outputDecision == 1) {
-
-                                hexString = Integer.toHexString(userInput);
+                                
+                                ConversionResult = Integer.parseInt(input.getText(),16);
                             }
                             // dec to bin
                             if (outputDecision == 2) {
+                                
+                                ConversionResult = Integer.parseInt(input.getText(),2);
 
                             }
 
                         }
+                        else if (inputDecision == 1) {
+                            //hex to dec
+                            if (outputDecision == 0) {
+                                ConversionResult = Integer.parseInt(input.getText(),16);
+                            }
+                            // dec to hex
+                            if (outputDecision == 1) {
+                                
+                                ConversionResult = Integer.parseInt(input.getText(),16);
+                            }
+                            // dec to bin
+                            if (outputDecision == 2) {
+                                
+                                ConversionResult = Integer.parseInt(input.getText(),2);
 
+                            }
+
+                        }
+                    output.setText(Integer.toString(ConversionResult));
                     }
                 });
 
-                JPanel panel4 = new JPanel();
-                panel4.setPreferredSize(new Dimension(200, 50));
-                if (hexString != "") {
-                    JLabel output = new JLabel(hexString);
-                    panel4.add(output);
-                    frame.add(panel4);
-                } else {
-                    JLabel output = new JLabel(String.valueOf(ConversionResult));
-                    panel4.add(output);
-                    frame.add(panel4);
-                }
+
 
             }
         });
