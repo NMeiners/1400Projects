@@ -43,9 +43,9 @@ public class Calculator {
                 JPanel buttonPanel = new JPanel(new GridLayout(4, 4));
                 frame.add(buttonPanel, BorderLayout.CENTER);
                 String[] buttonLabels = {"7", "8", "9", "/",
-                                         "4", "5", "6", "*",
-                                         "1", "2", "3", "-",
-                                         "0", ".", "=", "+"};
+                        "4", "5", "6", "*",
+                        "1", "2", "3", "-",
+                        "0", ".", "=", "+"};
                 for (String label : buttonLabels) {
                     JButton button = new JButton(label);
                     button.addActionListener(new ActionListener() {
@@ -86,6 +86,7 @@ public class Calculator {
             display.setText(display.getText() + buttonText);
             isOperatorClicked = false;
         } else if (buttonText.matches("[/+*-]")) {
+<<<<<<< Updated upstream
             if (!isOperatorClicked) {
                 if (!num2Entered){
                     if (display.getText() == ""){
@@ -95,6 +96,14 @@ public class Calculator {
                 } else {
                     num1 = calculateResult(num1, num2, operator);
                 }
+=======
+            if (isOperatorClicked) {
+                display.setText("Error");
+                isNewNumber = true;
+                isOperatorClicked = false;
+            } else {
+                num1 = Double.parseDouble(display.getText());
+>>>>>>> Stashed changes
                 operator = buttonText.charAt(0);
                 display.setText("");
                 isOperatorClicked = true;
@@ -132,7 +141,7 @@ public class Calculator {
                 result = num1 * num2;
                 break;
             case '/':
-                if (num2 != 0) {
+                if (num2!= 0) {
                     result = num1 / num2;
                 } else {
                     display.setText("Error: Division by zero");
@@ -141,5 +150,14 @@ public class Calculator {
                 break;
         }
         return result;
+
     }
+<<<<<<< Updated upstream
 }//end class calculator
+=======
+
+    public static void main(String[] args) {
+        start();
+    }
+}
+>>>>>>> Stashed changes
