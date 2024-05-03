@@ -89,15 +89,30 @@ public class Library {
     }// end main
 
     public static void projClosing() {//brings library to foreground when a program closes
-        Library.frame.setVisible(true);
+        frame.setVisible(true);
     }//end projClosing
 }// end class Library
 
 class Listener extends WindowAdapter{//returns to Library after a program closes
+    private Timer[] timers;
+    //null constructor
+    public Listener(){
+        timers = null;
+    }
+    //stop timer fix
+    public Listener(Timer timer1, Timer timer2){
+        timers = new Timer[2];
+        timers[0] = timer1;
+        timers[1] = timer2;
+    }
     @Override
     public void windowClosing(WindowEvent e) {
         // shows the Library window when a project closes
         Library.projClosing();
+        if (timers != null){
+            timers[0].stop();
+            timers[1].stop();
+        }
     }
 }//end class Listener
 
