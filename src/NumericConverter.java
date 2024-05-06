@@ -43,14 +43,6 @@ public class NumericConverter {
 
                 frame.add(panel);
 
-                inputType.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        JComboBox<String> inputType = (JComboBox<String>) e.getSource();
-                        String inputSelection = (String) inputType.getSelectedItem();
-                        System.out.println("Selected option: " + inputSelection);
-                    }
-                });
-
                 String[] outputOptions = { "Decimal", "Hex", "Binary" };
                 JComboBox<String> outputType = new JComboBox<>(outputOptions);
 
@@ -62,12 +54,7 @@ public class NumericConverter {
                 panel2.add(outputType);
                 panel.add(panel2, BorderLayout.EAST);
 
-                outputType.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        JComboBox<String> outputType = (JComboBox<String>) e.getSource();
-                        String outputSelection = (String) outputType.getSelectedItem();
-                    }
-                });
+               
                 JPanel panel3 = new JPanel();
                 panel3.setPreferredSize(new Dimension(200, 50));
                 JTextField input = new JTextField(10);
