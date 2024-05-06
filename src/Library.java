@@ -89,7 +89,7 @@ public class Library {
     }// end main
 
     public static void projClosing() {// brings library to foreground when a program closes
-        frame.setVisible(true);
+        SwingUtilities.invokeLater(() -> frame.setVisible(true));
     }// end projClosing
 }// end class Library
 
@@ -111,11 +111,13 @@ class Listener extends WindowAdapter {// returns to Library after a program clos
     @Override
     public void windowClosing(WindowEvent e) {
         // shows the Library window when a project closes
-        Library.projClosing();
-        if (timers != null) {
-            timers[0].stop();
-            timers[1].stop();
-        }
+        SwingUtilities.invokeLater(() -> {
+            Library.projClosing();
+            if (timers != null) {
+                timers[0].stop();
+                timers[1].stop();
+            }
+        });
     }
 }// end class Listener
 
