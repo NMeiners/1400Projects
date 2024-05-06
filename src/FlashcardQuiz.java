@@ -40,6 +40,10 @@ public class FlashcardQuiz {
                     action = new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent event){
+                            for (JButton button : answers){//disable buttons to prevent further input
+                                button.setEnabled(false);
+                            }
+
                             JButton clicked = (JButton) event.getSource();
                             if (clicked.getText() == stack.peek()[1]){
                                 display.setText("Correct!");
@@ -52,6 +56,9 @@ public class FlashcardQuiz {
                                 public void actionPerformed(ActionEvent e) {
                                     popStack(stack, questions);
                                     display.setText(stack.peek()[0]);
+                                    for (JButton button : answers){//reenable buttons
+                                        button.setEnabled(true);
+                                    }
                                 }
                             });
                             timer.setRepeats(false); // Only fire the timer once
@@ -80,8 +87,8 @@ public class FlashcardQuiz {
                     
                     //initialize buttons
                     buttons = new Container();
-                    buttons.setBounds(0, (frame.getHeight()/2), frame.getWidth(), (frame.getHeight()/2));//container constraints and positioning
-                    buttons.setLayout(new GridLayout(0, 4));//grid layout
+                    buttons.setBounds(0, (frame.getHeight()/2 - 35), frame.getWidth(), (frame.getHeight()/2));//container constraints and positioning
+                    buttons.setLayout(new GridLayout(0, 3));//grid layout
                     //create buttons
                     answers = new JButton[questions.size()];
                     for (int i = 0 ; i < questions.size() ; i++){
@@ -100,7 +107,7 @@ public class FlashcardQuiz {
                     display = new JLabel(stack.peek()[0]);
                     display.setFont(new Font("Arial", Font.PLAIN, 24));
                     display.setHorizontalAlignment(SwingConstants.CENTER);
-                    display.setBounds(0, 0, frame.getWidth(), (frame.getHeight()/2));
+                    display.setBounds(20, 20, frame.getWidth()-40, (frame.getHeight()/2 - 75));
                     frame.add(display);
 
 

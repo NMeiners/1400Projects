@@ -1,10 +1,18 @@
-this
-that
-something
-else
-hello
-no
-help
-hellos
-f
-f
+<html>Performs the arithmetic and logical functions that are the work of the computer</html>
+Arithmetic Logic Unit
+<html>Fetches the instructions from the main memory, decodes the instructions, and then executes them</html>
+Control Unit
+<html>Small amounts of high-speed memory contained within the CPU</html>
+Registers
+<html>Provides data storage and instructions to prevent the CPU from waiting for data to be retrieved from RAM</html>
+Cache
+<html>Manages the data flow between the main memory (RAM) and the CPU.</html>
+Memory Management Unit
+<html>Used to send control signals and data between the processor and other components.</html>
+Busses
+<html>Sends out a regular electrical pulse which synchronizes (keeps in time) all the components</html>
+Clock
+<html>Keeps track of the memory address of the next instruction to be fetched and executed</html>
+Program Counter
+<html>A general-purpose register used for arithmetic and logical operations. It stores intermediate results during calculations</html>
+Accumulator
